@@ -10,3 +10,88 @@ public class Labactivity3 {
 You must validate both new scores before assigning either one to ensure that 
 both are valid. This prevents an invalid score from being saved and keeps the student's 
 record accurate.
+
+
+
+public class CampusWallet {
+
+    private String owner;
+    private int balance;
+
+    // Constructor with owner and starting balance
+    public CampusWallet(String owner, int balance) {
+        this.owner = owner;
+
+        if (balance < 0) {
+            this.balance = 0;
+        } else {
+            this.balance = balance;
+        }
+    }
+
+    // Constructor with owner only
+    public CampusWallet(String owner) {
+        this(owner, 0);
+    }
+
+    // Add credits if the amount is positive
+    public boolean deposit(int amount) {
+        if (amount > 0) {
+            balance += amount;
+            return true;
+        }
+
+        return false;
+    }
+
+    // Transfer credits to another wallet
+    public boolean transferTo(CampusWallet recipient, int amount) {
+
+        if (recipient == null || recipient == this || amount <= 0 || balance < amount) {
+            return false;
+        }
+
+        balance -= amount;
+        recipient.balance += amount;
+
+        return true;
+    }
+
+    // Return the current balance
+    public int getBalance() {
+        return balance;
+    }
+
+    public static void main(String[] args) {
+
+        CampusWallet aly = new CampusWallet("Aly", 100);
+        CampusWallet ben = new CampusWallet("Ben");
+
+        System.out.println("Initial Balances:");
+        System.out.println("Aly: " + aly.getBalance());
+        System.out.println("Ben: " + ben.getBalance());
+
+        System.out.println("\nAly transfers 35 credits to Ben: " + aly.transferTo(ben, 35));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+
+        System.out.println("\nAly tries to transfer 70 credits: " + aly.transferTo(ben, 70));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+
+        System.out.println("\nAly transfers 10 credits to herself: " + aly.transferTo(aly, 10));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+
+        System.out.println("\nBen deposits 15 credits: " + ben.deposit(15));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+
+        System.out.println("\nAly transfers all remaining credits to Ben: " + aly.transferTo(ben, 65));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+
+        // Additional Test 1: Zero-credit transfer
+        System.out.println("\nZero-credit transfer: " + aly.transferTo(ben, 0));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+
+        // Additional Test 2: Transfer to null
+        System.out.println("\nTransfer to null: " + ben.transferTo(null, 10));
+        System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
+    }
+}
