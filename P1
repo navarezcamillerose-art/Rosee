@@ -145,9 +145,6 @@ public class PrintAccount {
 
 
 
-
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -157,42 +154,31 @@ public class Main {
         PrintAccount luis = new PrintAccount("Luis", -4);
 
         // Display starting credits
-        System.out.println("=== INITIAL ACCOUNTS ===");
         System.out.println("Mia: " + mia.getCredits());
         System.out.println("Luis: " + luis.getCredits());
 
-        // Mia prints 4 pages
-        System.out.println("\n=== PRINTING PAGES ===");
+        // Test printing pages
         System.out.println("Mia prints 4 pages: "
                 + mia.printPages(4));
-        System.out.println("Mia's credits: "
-                + mia.getCredits());
+        System.out.println("Mia: " + mia.getCredits());
 
-        // Mia tries to print 7 pages
-        System.out.println("\n=== INSUFFICIENT CREDITS ===");
         System.out.println("Mia prints 7 pages: "
                 + mia.printPages(7));
-        System.out.println("Mia's credits: "
-                + mia.getCredits());
+        System.out.println("Mia: " + mia.getCredits());
 
-        // Mia tries to add negative credits
-        System.out.println("\n=== INVALID CREDITS ===");
+        // Test adding credits
         System.out.println("Mia adds -3 credits: "
                 + mia.addCredits(-3));
-        System.out.println("Mia's credits: "
-                + mia.getCredits());
+        System.out.println("Mia: " + mia.getCredits());
 
-        // Mia adds 4 credits
-        System.out.println("\n=== ADDING CREDITS ===");
         System.out.println("Mia adds 4 credits: "
                 + mia.addCredits(4));
-        System.out.println("Mia's credits: "
-                + mia.getCredits());
+        System.out.println("Mia: " + mia.getCredits());
 
         // Check Luis's independent account
-        System.out.println("Luis's credits: "
-                + luis.getCredits());
+        System.out.println("Luis: " + luis.getCredits());
     }
 }
+
 
 
