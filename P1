@@ -1,187 +1,54 @@
-public class PrintAccount {
-    private String studentName;
-    private int credits;
-
-    public PrintAccount(String studentName, int credits) {
-        this.studentName = studentName;
-        if (credits < 0) {
-            this.credits = 0;
-        } else {
-            this.credits = credits;
-        }
-    }
-
-    public boolean addCredits(int amount) {
-        if (amount <= 0) {
-            return false;
-        }
-        this.credits += amount;
-        return true;
-    }
-
-    public boolean printPages(int pages) {
-        if (
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public class Main {
-    public static void main(String[] args) {
-        // 1. Create Mia's account with 10 credits and Luis's with -4 (starts at 0)
-        PrintAccount mia = new PrintAccount("Mia", 10);
-        PrintAccount luis = new PrintAccount("Luis", -4);
-        System.out.println("Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
-
-        // 2. Mia prints 4 pages -> true; Mia: 6
-        boolean step2 = mia.printPages(4);
-        System.out.println(step2 + "; Mia: " + mia.getCredits());
-
-        // 3. Mia tries to print 7 pages -> false; Mia: 6
-        boolean step3 = mia.printPages(7);
-        System.out.println(step3 + "; Mia: " + mia.getCredits());
-
-        // 4. Mia tries to add -3 credits -> false; Mia: 6
-        boolean step4 = mia.addCredits(-3);
-        System.out.println(step4 + "; Mia: " + mia.getCredits());
-
-        // 5. Mia adds 4 credits -> true; Mia: 10, Luis: 0
-        boolean step5 = mia.addCredits(4);
-        System.out.println(step5 + "; Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
-    }
-}
-
-
-
-
-public class PrintAccount {
-    private String studentName;
-    private int credits;
-
-    public PrintAccount(String studentName, int credits) {
-        this.studentName = studentName;
-        if (credits < 0) {
-            this.credits = 0;
-        } else {
-            this.credits = credits;
-        }
-    }
-
-    public boolean addCredits(int amount) {
-        if (amount <= 0) {
-            return false;
-        }
-        this.credits += amount;
-        return true;
-    }
-
-    public boolean printPages(int pages) {
-        if (pages <= 0 || pages > this.credits) {
-            return false;
-        }
-        this.credits -= pages;
-        return true;
-    }
-
-    public int getCredits() {
-        return this.credits;
-    }
-
-    public String getStudentName() {
-        return this.studentName;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-public class Main {
-    public static void main(String[] args) {
-        // 1. Create Mia's account with 10 credits and Luis's with -4 (starts at 0)
-        PrintAccount mia = new PrintAccount("Mia", 10);[cite: 1]
-        PrintAccount luis = new PrintAccount("Luis", -4);[cite: 1]
-        System.out.println("Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());[cite: 1]
-
-        // 2. Mia prints 4 pages -> true; Mia: 6[cite: 1]
-        boolean step2 = mia.printPages(4);[cite: 1]
-        System.out.println(step2 + "; Mia: " + mia.getCredits());[cite: 1]
-
-        // 3. Mia tries to print 7 pages -> false; Mia: 6[cite: 1]
-        boolean step3 = mia.printPages(7);[cite: 1]
-        System.out.println(step3 + "; Mia: " + mia.getCredits());[cite: 1]
-
-        // 4. Mia tries to add -3 credits -> false; Mia: 6[cite: 1]
-        boolean step4 = mia.addCredits(-3);[cite: 1]
-        System.out.println(step4 + "; Mia: " + mia.getCredits());[cite: 1]
-
-        // 5. Mia adds 4 credits -> true; Mia: 10, Luis: 0[cite: 1]
-        boolean step5 = mia.addCredits(4);[cite: 1]
-        System.out.println(step5 + "; Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());[cite: 1]
-    }
-}
 
 class PrintAccount {
-    private String studentName;[cite: 1]
-    private int credits;[cite: 1]
+    private String studentName;
+    private int credits;
 
+    // Constructor
     public PrintAccount(String studentName, int credits) {
-        this.studentName = studentName;[cite: 1]
-        if (credits < 0) {
-            this.credits = 0;[cite: 1]
-        } else {
-            this.credits = credits;[cite: 1]
-        }
+        this.studentName = studentName;
+        this.credits = credits < 0 ? 0 : credits;
     }
 
+    // Add credits if positive
     public boolean addCredits(int amount) {
-        if (amount <= 0) {
-            return false;[cite: 1]
+        if (amount > 0) {
+            credits += amount;
+            return true;
         }
-        this.credits += amount;[cite: 1]
-        return true;[cite: 1]
+        return false;
     }
 
+    // Print pages if credits are enough
     public boolean printPages(int pages) {
-        if (pages <= 0 || pages > this.credits) {
-            return false;[cite: 1]
+        if (pages > 0 && credits >= pages) {
+            credits -= pages;
+            return true;
         }
-        this.credits -= pages;[cite: 1]
-        return true;[cite: 1]
+        return false;
     }
 
+    // Get current credits
     public int getCredits() {
-        return this.credits;[cite: 1]
-    }
-
-    public String getStudentName() {
-        return this.studentName;[cite: 1]
+        return credits;
     }
 }
 
-// Activity 1, AI-use note:[cite: 1]
-// Prompt: "Don't write the method for me. What conditions should I check before deducting printing credits?"[cite: 1]
-// Accepted / Rejected: Accepted checking that pages is positive and credits are sufficient; wrote the method and test cases myself.[cite: 1]
-// How I checked it: Ran the handout test sequence in Main and verified the output values and boolean results.[cite: 1]
+public class Main {
+    public static void main(String[] args) {
+
+        // Create student accounts
+        PrintAccount mia = new PrintAccount("Mia", 10);
+        PrintAccount luis = new PrintAccount("Luis", -4);
+
+        // Display starting credits
+        System.out.println("Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
+
+        // Test printing pages
+        System.out.println(mia.printPages(4) + "; Mia: " + mia.getCredits());
+        System.out.println(mia.printPages(7) + "; Mia: " + mia.getCredits());
+
+        // Test adding credits
+        System.out.println(mia.addCredits(-3) + "; Mia: " + mia.getCredits());
+        System.out.println(mia.addCredits(4) + "; Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
+    }
+}
