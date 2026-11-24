@@ -84,3 +84,115 @@ public class PrintAccount {
         return this.studentName;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class PrintAccount {
+
+    // Private attributes
+    private String studentName;
+    private int credits;
+
+    // Constructor
+    public PrintAccount(String studentName, int credits) {
+        this.studentName = studentName;
+        this.credits = (credits < 0) ? 0 : credits;
+    }
+
+    // Add credits if the amount is positive
+    public boolean addCredits(int amount) {
+        if (amount <= 0) {
+            return false;
+        }
+
+        this.credits += amount;
+        return true;
+    }
+
+    // Print pages if enough credits are available
+    public boolean printPages(int pages) {
+        if (pages <= 0 || pages > this.credits) {
+            return false;
+        }
+
+        this.credits -= pages;
+        return true;
+    }
+
+    // Return current credits
+    public int getCredits() {
+        return this.credits;
+    }
+
+    // Return student name
+    public String getStudentName() {
+        return this.studentName;
+    }
+}
+
+
+
+
+
+
+
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Create two accounts
+        PrintAccount mia = new PrintAccount("Mia", 10);
+        PrintAccount luis = new PrintAccount("Luis", -4);
+
+        // Display starting credits
+        System.out.println("=== INITIAL ACCOUNTS ===");
+        System.out.println("Mia: " + mia.getCredits());
+        System.out.println("Luis: " + luis.getCredits());
+
+        // Mia prints 4 pages
+        System.out.println("\n=== PRINTING PAGES ===");
+        System.out.println("Mia prints 4 pages: "
+                + mia.printPages(4));
+        System.out.println("Mia's credits: "
+                + mia.getCredits());
+
+        // Mia tries to print 7 pages
+        System.out.println("\n=== INSUFFICIENT CREDITS ===");
+        System.out.println("Mia prints 7 pages: "
+                + mia.printPages(7));
+        System.out.println("Mia's credits: "
+                + mia.getCredits());
+
+        // Mia tries to add negative credits
+        System.out.println("\n=== INVALID CREDITS ===");
+        System.out.println("Mia adds -3 credits: "
+                + mia.addCredits(-3));
+        System.out.println("Mia's credits: "
+                + mia.getCredits());
+
+        // Mia adds 4 credits
+        System.out.println("\n=== ADDING CREDITS ===");
+        System.out.println("Mia adds 4 credits: "
+                + mia.addCredits(4));
+        System.out.println("Mia's credits: "
+                + mia.getCredits());
+
+        // Check Luis's independent account
+        System.out.println("Luis's credits: "
+                + luis.getCredits());
+    }
+}
+
+
