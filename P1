@@ -20,41 +20,55 @@ public class PrintAccount {
     }
 
     public boolean printPages(int pages) {
-        if (pages <= 0 || pages > this.credits) {
-            return false;
-        }
-        this.credits -= pages;
-        return true;
-    }
+        if (
 
-    public int getCredits() {
-        return this.credits;
-    }
 
-    public String getStudentName() {
-        return this.studentName;
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 public class Main {
     public static void main(String[] args) {
+        // 1. Create Mia's account with 10 credits and Luis's with -4 (starts at 0)
         PrintAccount mia = new PrintAccount("Mia", 10);
         PrintAccount luis = new PrintAccount("Luis", -4);
-        System.out.println(mia.getStudentName() + ": " + mia.getCredits()
-                + ", " + luis.getStudentName() + ": " + luis.getCredits());
+        System.out.println("Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
 
-        System.out.println(mia.printPages(4) + "; " + mia.getStudentName() + ": " + mia.getCredits());
-        System.out.println(mia.printPages(7) + "; " + mia.getStudentName() + ": " + mia.getCredits());
-        System.out.println(mia.addCredits(-3) + "; " + mia.getStudentName() + ": " + mia.getCredits());
-        System.out.println(mia.addCredits(4) + "; "
-                + mia.getStudentName() + ": " + mia.getCredits() + ", "
-                + luis.getStudentName() + ": " + luis.getCredits());
+        // 2. Mia prints 4 pages -> true; Mia: 6
+        boolean step2 = mia.printPages(4);
+        System.out.println(step2 + "; Mia: " + mia.getCredits());
+
+        // 3. Mia tries to print 7 pages -> false; Mia: 6
+        boolean step3 = mia.printPages(7);
+        System.out.println(step3 + "; Mia: " + mia.getCredits());
+
+        // 4. Mia tries to add -3 credits -> false; Mia: 6
+        boolean step4 = mia.addCredits(-3);
+        System.out.println(step4 + "; Mia: " + mia.getCredits());
+
+        // 5. Mia adds 4 credits -> true; Mia: 10, Luis: 0
+        boolean step5 = mia.addCredits(4);
+        System.out.println(step5 + "; Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
     }
 }
-jsjsjjdjdjdjdjjdjdjjdjjdjfjfjfjjfjwiiwjsje
 
 
-class PrintAccount {
+
+
+public class PrintAccount {
     private String studentName;
     private int credits;
 
@@ -91,24 +105,3 @@ class PrintAccount {
         return this.studentName;
     }
 }
-
-public class Main {
-    public static void main(String[] args) {
-        PrintAccount mia = new PrintAccount("Mia", 10);
-        PrintAccount luis = new PrintAccount("Luis", -4);
-        System.out.println(mia.getStudentName() + ": " + mia.getCredits()
-                + ", " + luis.getStudentName() + ": " + luis.getCredits());
-
-        System.out.println(mia.printPages(4) + "; " + mia.getStudentName() + ": " + mia.getCredits());
-        System.out.println(mia.printPages(7) + "; " + mia.getStudentName() + ": " + mia.getCredits());
-        System.out.println(mia.addCredits(-3) + "; " + mia.getStudentName() + ": " + mia.getCredits());
-        System.out.println(mia.addCredits(4) + "; "
-                + mia.getStudentName() + ": " + mia.getCredits() + ", "
-                + luis.getStudentName() + ": " + luis.getCredits());
-    }
-}
-
-// Activity 1, AI-use note:
-// Prompt: "Don't write the method for me. What conditions should I check before deducting printing credits?"
-// Accepted / Rejected: Accepted checking that pages is positive and credits are sufficient; wrote the method and test cases myself.
-// How I checked it: Ran the program and checked that every print statement matched the expected output.
