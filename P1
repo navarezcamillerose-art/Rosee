@@ -1,4 +1,25 @@
 
+public class Labactivity3 {
+
+    public static void main(String[] args) {
+
+        // Create student accounts
+        PrintAccount mia = new PrintAccount("Mia", 10);
+        PrintAccount luis = new PrintAccount("Luis", -4);
+
+        // Display starting credits
+        System.out.println("Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
+
+        // Test printing pages
+        System.out.println(mia.printPages(4) + "; Mia: " + mia.getCredits());
+        System.out.println(mia.printPages(7) + "; Mia: " + mia.getCredits());
+
+        // Test adding credits
+        System.out.println(mia.addCredits(-3) + "; Mia: " + mia.getCredits());
+        System.out.println(mia.addCredits(4) + "; Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
+    }
+}
+
 class PrintAccount {
     private String studentName;
     private int credits;
@@ -30,25 +51,5 @@ class PrintAccount {
     // Get current credits
     public int getCredits() {
         return credits;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-
-        // Create student accounts
-        PrintAccount mia = new PrintAccount("Mia", 10);
-        PrintAccount luis = new PrintAccount("Luis", -4);
-
-        // Display starting credits
-        System.out.println("Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
-
-        // Test printing pages
-        System.out.println(mia.printPages(4) + "; Mia: " + mia.getCredits());
-        System.out.println(mia.printPages(7) + "; Mia: " + mia.getCredits());
-
-        // Test adding credits
-        System.out.println(mia.addCredits(-3) + "; Mia: " + mia.getCredits());
-        System.out.println(mia.addCredits(4) + "; Mia: " + mia.getCredits() + ", Luis: " + luis.getCredits());
     }
 }
