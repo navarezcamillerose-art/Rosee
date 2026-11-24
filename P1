@@ -1,0 +1,86 @@
+
+public class PrintAccount {
+
+    // Private attributes store each student's account information.
+    // Private means these values cannot be accessed directly
+    // from the Main class.
+    private String studentName;
+    private int credits;
+
+
+    // CONSTRUCTOR
+    // This runs automatically when a new PrintAccount object is created.
+    public PrintAccount(String studentName, int credits) {
+
+        // Store the student's name in the object's studentName field.
+        // "this.studentName" refers to the field.
+        // "studentName" refers to the constructor parameter.
+        this.studentName = studentName;
+
+        // Check if the starting credits are negative.
+        // An account must never start with negative credits.
+        if (credits < 0) {
+            this.credits = 0;
+        } else {
+            // If the credits are valid, store the given amount.
+            this.credits = credits;
+        }
+    }
+
+
+    // ADD CREDITS METHOD
+    // Adds credits to the student's printing account.
+    // Returns true if successful and false if unsuccessful.
+    public boolean addCredits(int amount) {
+
+        // Only positive amounts are accepted.
+        if (amount <= 0) {
+
+            // Reject the operation.
+            // The existing credits will remain unchanged.
+            return false;
+        }
+
+        // Add the accepted amount to the current credits.
+        this.credits += amount;
+
+        // Inform the Main class that the operation succeeded.
+        return true;
+    }
+
+
+    // PRINT PAGES METHOD
+    // Each printed page costs exactly one credit.
+    public boolean printPages(int pages) {
+
+        // Check whether the requested page count is valid
+        // and whether the account has enough credits.
+        if (pages <= 0 || pages > this.credits) {
+
+            // Reject the operation if either condition is true.
+            // Credits will not be deducted.
+            return false;
+        }
+
+        // Deduct the number of pages from the available credits.
+        this.credits -= pages;
+
+        // Return true because the printing request was successful.
+        return true;
+    }
+
+
+    // GET CREDITS METHOD
+    // Allows other classes to view the current credits.
+    // It does not change the account balance.
+    public int getCredits() {
+        return this.credits;
+    }
+
+
+    // GET STUDENT NAME METHOD
+    // Returns the name of the account owner.
+    public String getStudentName() {
+        return this.studentName;
+    }
+}
