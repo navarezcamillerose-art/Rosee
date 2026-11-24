@@ -1,2 +1,114 @@
+public class PrintAccount {
+    private String studentName;
+    private int credits;
 
-AVISALA
+    public PrintAccount(String studentName, int credits) {
+        this.studentName = studentName;
+        if (credits < 0) {
+            this.credits = 0;
+        } else {
+            this.credits = credits;
+        }
+    }
+
+    public boolean addCredits(int amount) {
+        if (amount <= 0) {
+            return false;
+        }
+        this.credits += amount;
+        return true;
+    }
+
+    public boolean printPages(int pages) {
+        if (pages <= 0 || pages > this.credits) {
+            return false;
+        }
+        this.credits -= pages;
+        return true;
+    }
+
+    public int getCredits() {
+        return this.credits;
+    }
+
+    public String getStudentName() {
+        return this.studentName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PrintAccount mia = new PrintAccount("Mia", 10);
+        PrintAccount luis = new PrintAccount("Luis", -4);
+        System.out.println(mia.getStudentName() + ": " + mia.getCredits()
+                + ", " + luis.getStudentName() + ": " + luis.getCredits());
+
+        System.out.println(mia.printPages(4) + "; " + mia.getStudentName() + ": " + mia.getCredits());
+        System.out.println(mia.printPages(7) + "; " + mia.getStudentName() + ": " + mia.getCredits());
+        System.out.println(mia.addCredits(-3) + "; " + mia.getStudentName() + ": " + mia.getCredits());
+        System.out.println(mia.addCredits(4) + "; "
+                + mia.getStudentName() + ": " + mia.getCredits() + ", "
+                + luis.getStudentName() + ": " + luis.getCredits());
+    }
+}
+jsjsjjdjdjdjdjjdjdjjdjjdjfjfjfjjfjwiiwjsje
+
+
+class PrintAccount {
+    private String studentName;
+    private int credits;
+
+    public PrintAccount(String studentName, int credits) {
+        this.studentName = studentName;
+        if (credits < 0) {
+            this.credits = 0;
+        } else {
+            this.credits = credits;
+        }
+    }
+
+    public boolean addCredits(int amount) {
+        if (amount <= 0) {
+            return false;
+        }
+        this.credits += amount;
+        return true;
+    }
+
+    public boolean printPages(int pages) {
+        if (pages <= 0 || pages > this.credits) {
+            return false;
+        }
+        this.credits -= pages;
+        return true;
+    }
+
+    public int getCredits() {
+        return this.credits;
+    }
+
+    public String getStudentName() {
+        return this.studentName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PrintAccount mia = new PrintAccount("Mia", 10);
+        PrintAccount luis = new PrintAccount("Luis", -4);
+        System.out.println(mia.getStudentName() + ": " + mia.getCredits()
+                + ", " + luis.getStudentName() + ": " + luis.getCredits());
+
+        System.out.println(mia.printPages(4) + "; " + mia.getStudentName() + ": " + mia.getCredits());
+        System.out.println(mia.printPages(7) + "; " + mia.getStudentName() + ": " + mia.getCredits());
+        System.out.println(mia.addCredits(-3) + "; " + mia.getStudentName() + ": " + mia.getCredits());
+        System.out.println(mia.addCredits(4) + "; "
+                + mia.getStudentName() + ": " + mia.getCredits() + ", "
+                + luis.getStudentName() + ": " + luis.getCredits());
+    }
+}
+
+// Activity 1, AI-use note:
+// Prompt: "Don't write the method for me. What conditions should I check before deducting printing credits?"
+// Accepted / Rejected: Accepted checking that pages is positive and credits are sufficient; wrote the method and test cases myself.
+// How I checked it: Ran the program and checked that every print statement matched the expected output.
