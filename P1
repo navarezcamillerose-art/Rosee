@@ -95,3 +95,58 @@ public class CampusWallet {
         System.out.println("Aly: " + aly.getBalance() + ", Ben: " + ben.getBalance());
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Create three points
+        EngineeringPoint pointA = new EngineeringPoint(3, 4);
+        EngineeringPoint pointB = new EngineeringPoint(9, 12);
+        EngineeringPoint pointC = new EngineeringPoint(5, 2);
+
+        System.out.println("===== ENGINEERING DISTANCE AND SLOPE ANALYZER =====");
+
+        // Display Point A and Point B
+        System.out.printf("\nPoint A: (%.2f, %.2f)\n", pointA.getX(), pointA.getY());
+        System.out.printf("Point B: (%.2f, %.2f)\n", pointB.getX(), pointB.getY());
+
+        // Calculate distance and slope of A and B
+        double distance = pointA.calculateDistance(pointB);
+        double slope = pointA.calculateSlope(pointB);
+
+        System.out.printf("\nDistance: %.2f units\n", distance);
+        System.out.printf("Slope: %.2f\n", slope);
+
+        // Display Point A and Point C
+        System.out.println("\n===== SECOND PAIR =====");
+
+        System.out.printf("\nPoint A: (%.2f, %.2f)\n", pointA.getX(), pointA.getY());
+        System.out.printf("Point C: (%.2f, %.2f)\n", pointC.getX(), pointC.getY());
+
+        // Calculate distance and slope of A and C
+        distance = pointA.calculateDistance(pointC);
+        slope = pointA.calculateSlope(pointC);
+
+        System.out.printf("\nDistance: %.2f units\n", distance);
+        System.out.printf("Slope: %.2f\n", slope);
+    }
+}
+
