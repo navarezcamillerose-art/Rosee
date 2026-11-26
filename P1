@@ -150,3 +150,56 @@ public class Main {
     }
 }
 
+
+
+
+
+
+
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Create three points
+        EngineeringPoint pointA = new EngineeringPoint(3, 4);
+        EngineeringPoint pointB = new EngineeringPoint(9, 12);
+        EngineeringPoint pointC = new EngineeringPoint(5, 2);
+
+        System.out.println("===== ENGINEERING DISTANCE AND SLOPE ANALYZER =====");
+
+        // First pair: A and B
+        System.out.println("\nPoint A: (" + pointA.getX() + ", " + pointA.getY() + ")");
+        System.out.println("Point B: (" + pointB.getX() + ", " + pointB.getY() + ")");
+
+        double distance = pointA.calculateDistance(pointB);
+        double slope = pointA.calculateSlope(pointB);
+
+        System.out.println("\nDistance: " + distance + " units");
+
+        if (Double.isNaN(slope)) {
+            System.out.println("Slope: Undefined");
+        } else {
+            System.out.println("Slope: " + slope);
+        }
+
+        // Second pair: A and C
+        System.out.println("\n===== SECOND PAIR =====");
+
+        System.out.println("Point A: (" + pointA.getX() + ", " + pointA.getY() + ")");
+        System.out.println("Point C: (" + pointC.getX() + ", " + pointC.getY() + ")");
+
+        distance = pointA.calculateDistance(pointC);
+        slope = pointA.calculateSlope(pointC);
+
+        System.out.println("\nDistance: " + distance + " units");
+
+        if (Double.isNaN(slope)) {
+            System.out.println("Slope: Undefined");
+        } else {
+            System.out.println("Slope: " + slope);
+        }
+    }
+}
+
+
