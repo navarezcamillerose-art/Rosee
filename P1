@@ -203,3 +203,58 @@ public class Main {
 }
 
 
+
+
+
+
+
+public class EngineeringPoint {
+    private double x;
+    private double y;
+
+    // Constructor
+    public EngineeringPoint(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Setters
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    // Getters
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    // Calculate distance
+    public double calculateDistance(EngineeringPoint point) {
+        double dx = point.x - this.x;
+        double dy = point.y - this.y;
+
+        return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+    }
+
+    // Calculate slope
+    public double calculateSlope(EngineeringPoint point) {
+        double dx = point.x - this.x;
+        double dy = point.y - this.y;
+
+        if (dx == 0) {
+            return Double.NaN;
+        }
+
+        return dy / dx;
+    }
+}
+
+
